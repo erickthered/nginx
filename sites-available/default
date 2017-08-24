@@ -1,0 +1,24 @@
+server {
+        listen   80 default;
+
+        root /var/www/html;
+        index index.php index.html index.htm;
+
+        include common/restrictions.conf;
+        include common/ssl-enabled.conf;
+
+#	return 301 https://$host$request_uri;
+}
+
+server {
+	listen 443 ssl http2 default;
+
+        root /var/www/html;
+        index index.php index.html index.htm;
+
+	include common/restrictions.conf;
+        include common/ssl-enabled.conf;
+
+        ssl_certificate /etc/letsencrypt/live/<domain>/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/<domain>/privkey.pem;
+}
