@@ -4,9 +4,11 @@ server {
         root /var/www/html;
         index index.php index.html index.htm;
 
+	# When done, please comment the following lines
         include common/restrictions.conf;
         include common/ssl-enabled.conf;
 
+	# When done, please uncomment the next line
 #	return 301 https://$host$request_uri;
 }
 
